@@ -8,6 +8,7 @@ typedef string Vertex;
 
 class Edge {
     public:
+        Edge();
         Edge(Vertex s, Vertex d, int cases);
         Vertex getSource() const;
         Vertex getDestination() const;

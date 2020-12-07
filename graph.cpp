@@ -2,6 +2,8 @@
 #include "edge.h"
 #include <map>
 
+
+
 void Graph::insertVertex(Vertex v) {
     /*vector<bool> vect(vertices_.size() + 1, false); 
     edge_matrix_.push_back(vect);
@@ -82,4 +84,8 @@ vector<Vertex> Graph::getVertices() {
     }
 
     return ret;
+}
+
+int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
+    return adjacency_list[v1][v2].getCases();
 }

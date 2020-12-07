@@ -2,6 +2,8 @@
 
 typedef string Vertex;
 
+Edge::Edge() : source_("source"), destination_("dest"), cases_(0) {}
+
 Edge::Edge(Vertex s, Vertex d, int cases) : source_(s), destination_(d), cases_(cases) {}
 
 

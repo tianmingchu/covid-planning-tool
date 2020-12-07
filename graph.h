@@ -31,16 +31,10 @@ using std::pair;
 class Graph {
     public: 
         void insertVertex(Vertex v);
-        //void removeVertex(Vertex v);
         void insertEdge(Vertex v1, Vertex v2, int cases);
-        //void removeEdge(Vertex v1, Vertex v2);
         vector<Vertex> incidentVertices(Vertex v);
         vector<Vertex> getVertices();
+        int getCasesByEdge(Vertex v1, Vertex v2);
     private:
-        /*
-        vector<vector<bool>> edge_matrix_;
-        map<Vertex, int> vertices_;
-        vector<Vertex> vertices_vector_;*/
-
         mutable unordered_map<Vertex, unordered_map<Vertex, Edge>> adjacency_list;
 };
