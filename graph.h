@@ -28,6 +28,7 @@ using std::string;
 using std::vector;
 using std::pair;
 
+typedef pair<int, Vertex> iPair;
 class Graph {
     public: 
         void insertVertex(Vertex v);
@@ -35,6 +36,7 @@ class Graph {
         vector<Vertex> incidentVertices(Vertex v);
         vector<Vertex> getVertices();
         int getCasesByEdge(Vertex v1, Vertex v2);
+        /*vector<vector<Vertex>>*/void shortestPath(Vertex v1);
     private:
         mutable unordered_map<Vertex, unordered_map<Vertex, Edge>> adjacency_list;
 };

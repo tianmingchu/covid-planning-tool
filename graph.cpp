@@ -1,6 +1,7 @@
 #include "graph.h"
 #include "edge.h"
 #include <map>
+#include <queue>
 
 
 
@@ -88,4 +89,36 @@ vector<Vertex> Graph::getVertices() {
 
 int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
     return adjacency_list[v1][v2].getCases();
+}
+
+/*vector<vector<Vertex>>*/void Graph::shortestPath(Vertex v1) {
+    
+    std::map<Vertex,int> d;
+    std::map<Vertex, Vertex> p;
+    for (Vertex v : getVertices()) {
+        d[v] = INT_MAX;
+        p[v] = "NONE";
+    }
+    d[v1] = 0;
+    std::priority_queue<iPair> q;
+    q.push({0, v1});
+    Graph t;
+
+    while (!q.empty()) {
+        Vertex v = q.top().second;
+        q.pop();
+
+        for (Vertex v2 : incidentVertices(v)) {
+            int cases = getCasesByEdge(v, v2);
+
+            if (d[v2] > d[v] + cases) {
+                d[v2] = d[v] + cases;
+                p[v2] = v;
+                q.push({(-1 * d[v2]), v2});
+            }
+        }
+    }
+    std::cout<<"hiiiiii"<<std::endl;
+    for (Vertex v : getVertices()) 
+        std::cout<<"Vertex: "<<v<<"   Distance from source: "<<d[v]<<"   Previous vertex: "<<p[v]<<std::endl;
 }
