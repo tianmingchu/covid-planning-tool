@@ -1,14 +1,14 @@
 ## Week 1 - 11/18/2020
-   - words
+   - Worked on Contract/Goals
 
 ## Week 2 - 11/22/2020
-   - words
+   - Reading input from covid data
 
 ## Update for week 2 - 11/25/2020
-   - words
+   - Graph class
 
 ## Week 3 - 11/29/2020
-   - words
+   - BFS Traversal
 
 ## Update for week 3 - 12/04/2020
-   - words
+   - Landmark path to travel through states

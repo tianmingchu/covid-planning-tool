@@ -1,6 +1,14 @@
 #include "graph.h"
-#include <map>
+#include "readFromFile.cpp"
+
 int main() {
+    /*
+    Graph g = createGraph("united_states_covid19_cases_and_deaths_by_state.csv"); // create weighted graph based on data
+    g.BFS("Illinois"); // prints BFS traversal of graph
+    g.printGraph(); // prints all vertices, neighbors, & edges
+    */
+    //nayonika's stuff
+    
     Graph g;
     Vertex v1 = "illinois";
     Vertex v2 = "wisconsin";
