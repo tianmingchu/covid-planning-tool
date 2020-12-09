@@ -3,7 +3,31 @@
 #include <map>
 #include <queue>
 
+void Graph::BFS(Vertex v) {
+    unordered_map<Vertex, bool> visited;
+    vector<Vertex> vertices = this->getVertices();
+    for (auto i = vertices.begin(); i != vertices.end(); ++i) {  // keep track of vertices visited
+        visited.insert(pair<Vertex, bool>(*i, false));
+    }
 
+    std::list<Vertex> queue;
+    visited[v] = true;
+    queue.push_back(v);
+    cout << endl;
+    while (!queue.empty()) {
+        v = queue.front();
+        cout << v << endl;
+        queue.pop_front();
+        unordered_map<Vertex, Edge> adjacentVertices = adjacency_list[v];
+        for (auto i = adjacentVertices.begin(); i != adjacentVertices.end(); ++i) {
+            if (!visited[i->first]) {   // add all unvisited adjacent vertices to queue
+                visited[i->first] = true;
+                queue.push_back(i->first);
+            }
+        }
+    }
+    cout << endl;
+}
 
 void Graph::insertVertex(Vertex v) {
     /*vector<bool> vect(vertices_.size() + 1, false); 
@@ -121,4 +145,20 @@ int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
     std::cout<<"hiiiiii"<<std::endl;
     for (Vertex v : getVertices()) 
         std::cout<<"Vertex: "<<v<<"   Distance from source: "<<d[v]<<"   Previous vertex: "<<p[v]<<std::endl;
+}
+
+void Graph::printGraph() {
+    cout << endl;
+    for (auto i = adjacency_list.begin(); i != adjacency_list.end(); ++i) {
+        cout << i->first << endl;
+        for (auto it = i->second.begin(); it != i->second.end(); ++it) {
+            std::stringstream ss;
+            ss << it->first;
+            string vertexColumn = "        => " + ss.str();
+            vertexColumn += " ";
+            cout << std::left << std::setw(30) << vertexColumn;
+            cout << std::left << "case rate per 100k: " << it->second.getCases() << endl;
+        }
+        cout << endl;
+    }
 }
