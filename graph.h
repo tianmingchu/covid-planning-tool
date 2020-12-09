@@ -14,6 +14,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <map>
 
 #include "edge.h"
 
@@ -27,16 +28,19 @@ using std::unordered_map;
 using std::string;
 using std::vector;
 using std::pair;
+using std::map;
 
-typedef pair<int, Vertex> iPair;
+typedef pair<int, Vertex> intVertPair;
 class Graph {
     public: 
         void insertVertex(Vertex v);
         void insertEdge(Vertex v1, Vertex v2, int cases);
         vector<Vertex> incidentVertices(Vertex v);
         vector<Vertex> getVertices();
+        bool vertexExists(Vertex v) const;
         int getCasesByEdge(Vertex v1, Vertex v2);
-        /*vector<vector<Vertex>>*/void shortestPath(Vertex v1);
+        map<Vertex, vector<Vertex>> shortestPaths(Vertex v1);
+        string landmarkPath(Vertex source, Vertex dest, Vertex landmark);
     private:
         mutable unordered_map<Vertex, unordered_map<Vertex, Edge>> adjacency_list;
 };

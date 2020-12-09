@@ -2,6 +2,7 @@
 #include "edge.h"
 #include <map>
 #include <queue>
+#include <algorithm>
 
 
 
@@ -87,11 +88,16 @@ vector<Vertex> Graph::getVertices() {
     return ret;
 }
 
+bool Graph::vertexExists(Vertex v) const
+{
+    return !(adjacency_list.find(v) == adjacency_list.end());
+}
+
 int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
     return adjacency_list[v1][v2].getCases();
 }
 
-/*vector<vector<Vertex>>*/void Graph::shortestPath(Vertex v1) {
+map<Vertex, vector<Vertex>> Graph::shortestPaths(Vertex v1) {
     
     std::map<Vertex,int> d;
     std::map<Vertex, Vertex> p;
@@ -100,9 +106,8 @@ int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
         p[v] = "NONE";
     }
     d[v1] = 0;
-    std::priority_queue<iPair> q;
+    std::priority_queue<intVertPair> q;
     q.push({0, v1});
-    Graph t;
 
     while (!q.empty()) {
         Vertex v = q.top().second;
@@ -118,7 +123,35 @@ int Graph::getCasesByEdge(Vertex v1, Vertex v2) {
             }
         }
     }
-    std::cout<<"hiiiiii"<<std::endl;
-    for (Vertex v : getVertices()) 
-        std::cout<<"Vertex: "<<v<<"   Distance from source: "<<d[v]<<"   Previous vertex: "<<p[v]<<std::endl;
+    
+    map<Vertex, vector<Vertex>> paths;
+    for (Vertex v : getVertices()) {
+        Vertex current = p[v];
+        vector<Vertex> path;
+        path.push_back(v);
+        while(current != "NONE") {
+            path.push_back(current);
+            current = p[current];
+        }
+        paths.insert({v, path});
+    }
+    return paths;
+}
+
+std::string Graph::landmarkPath(Vertex source, Vertex dest, Vertex landmark) {
+    map<Vertex, vector<Vertex>> paths= shortestPaths(landmark);
+    vector<Vertex> sourceToLandmark = paths[source];
+    vector<Vertex> landmarkToDest = paths[dest];
+    std::reverse(landmarkToDest.begin(), landmarkToDest.end()); 
+    std::string path = "Path: ";
+    for (Vertex v : sourceToLandmark) {
+        path += v;
+        path += "->";
+    }
+    for (size_t i = 1; i < landmarkToDest.size() - 1; i++) {
+        path += landmarkToDest[i];
+        path += "->";
+    }
+    path += landmarkToDest[landmarkToDest.size() - 1];
+    return path;
 }
