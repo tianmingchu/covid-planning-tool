@@ -10,7 +10,11 @@
 using namespace std;
 
 /**
- *  Checks if a string is one of the 50 states
+ * @brief Checks if a string is one of the 50 states
+ * 
+ * @param s The string to check for
+ * @return true 
+ * @return false 
  */
 bool isState(string s) {
     string states[50] = {"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
@@ -26,8 +30,10 @@ bool isState(string s) {
 }
 
 /**
- *  Returns a map of (state, case rate) for each of the 50 states
- *  according to the .csv file
+ * @brief Returns a map of (state, case rate) for each of the 50 states according to the .csv file
+ * 
+ * @param f The filename of the dataset
+ * @return map<string, int> 
  */
 map<string, int> readCovidData(string f) {
     ifstream file(f);
@@ -58,7 +64,10 @@ map<string, int> readCovidData(string f) {
 }
 
 /**
- *  Returns graph created by .csv file
+ * @brief Returns graph created by .csv file
+ * 
+ * @param f The filename of the dataset
+ * @return Graph 
  */
 Graph createGraph(string f) {
     Graph g;
