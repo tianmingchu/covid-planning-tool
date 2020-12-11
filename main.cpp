@@ -53,6 +53,7 @@ int main() {
                     cout << "\nSorry, invalid state";
                 }
             } while (1);
+            cout << "Safest path to " + destination + " starting at " + departing + " and visiting " + state + " along the way: " << endl;
             cout << g.landmarkPath(departing, destination, state) << endl;
         } else if (s == "3") {
             g.printGraph();

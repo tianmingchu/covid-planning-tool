@@ -139,14 +139,14 @@ std::string Graph::landmarkPath(Vertex source, Vertex dest, Vertex landmark) {
     vector<Vertex> sourceToLandmark = paths[source];
     vector<Vertex> landmarkToDest = paths[dest];
     std::reverse(landmarkToDest.begin(), landmarkToDest.end()); 
-    std::string path = "Safest path to " + dest + " starting at " + source + " and visiting " + landmark + " along the way: ";
+    std::string path = "Path: ";
     for (Vertex v : sourceToLandmark) {
         path += v;
-        path += " -> ";
+        path += "->";
     }
     for (size_t i = 1; i < landmarkToDest.size() - 1; i++) {
         path += landmarkToDest[i];
-        path += " -> ";
+        path += "->";
     }
     path += landmarkToDest[landmarkToDest.size() - 1];
     return path;
