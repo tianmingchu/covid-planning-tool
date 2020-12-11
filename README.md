@@ -16,9 +16,11 @@ We believe our project is already capable of providing people with useful inform
 2. In the terminal, cd into the project directory. 
 3. To run the main program:
     0. If you are on EWS, type 'module load llvm/6.0.1' (single quotes not included) in the terminal.
-    1. Run 'make'.
-    2. Run './finalproj'.
-    3. To run the landmark path with different values, open main.cpp and modify line 9 to replace the example values. Use graph.h to view the function definition.
+    1. Go to covid.cdc.gov/covid-data-tracker/#cases_casesper100klast7days,
+    scroll down and click 'Download Data' for the most recent data. Place
+    this file in the "data" folder in this directory.
+    2. Run 'make'.
+    3. Run './finalproj'.
 4. To run the tests:
     1. Type 'make test'.
     2. Run './test'
