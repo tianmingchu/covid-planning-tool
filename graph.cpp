@@ -14,7 +14,6 @@ void Graph::BFS(Vertex v) {
     std::list<Vertex> queue;
     visited[v] = true;
     queue.push_back(v);
-    cout << endl;
     while (!queue.empty()) {
         v = queue.front();
         cout << v << endl;
@@ -27,7 +26,6 @@ void Graph::BFS(Vertex v) {
             }
         }
     }
-    cout << endl;
 }
 
 void Graph::insertVertex(Vertex v) {
@@ -141,21 +139,20 @@ std::string Graph::landmarkPath(Vertex source, Vertex dest, Vertex landmark) {
     vector<Vertex> sourceToLandmark = paths[source];
     vector<Vertex> landmarkToDest = paths[dest];
     std::reverse(landmarkToDest.begin(), landmarkToDest.end()); 
-    std::string path = "Path: ";
+    std::string path = "Safest path to " + dest + " starting at " + source + " and visiting " + landmark + " along the way: ";
     for (Vertex v : sourceToLandmark) {
         path += v;
-        path += "->";
+        path += " -> ";
     }
     for (size_t i = 1; i < landmarkToDest.size() - 1; i++) {
         path += landmarkToDest[i];
-        path += "->";
+        path += " -> ";
     }
     path += landmarkToDest[landmarkToDest.size() - 1];
     return path;
 }
 
 void Graph::printGraph() {
-    cout << endl;
     for (auto i = adjacency_list.begin(); i != adjacency_list.end(); ++i) {
         cout << i->first << endl;
         for (auto it = i->second.begin(); it != i->second.end(); ++it) {
