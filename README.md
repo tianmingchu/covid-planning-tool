@@ -15,10 +15,11 @@ We believe our project is already capable of providing people with useful inform
 1. Clone the repository.
 2. In the terminal, cd into the project directory. 
 3. To run the main program:
-    1. Type 'make' in the terminal (single quotes not included).
-    2. Type './finalproj' in the terminal.
+    0. If you are on EWS, type 'module load llvm/6.0.1' (single quotes not included) in the terminal.
+    1. Run 'make'.
+    2. Run './finalproj'.
     3. To run the landmark path with different values, open main.cpp and modify line 9 to replace the example values. Use graph.h to view the function definition.
 4. To run the tests:
-    1. Type 'make test' in the terminal.
+    1. Type 'make test'.
     2. Run './test'
 
