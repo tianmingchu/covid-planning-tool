@@ -31,6 +31,8 @@ using std::pair;
 using std::map;
 
 typedef pair<int, Vertex> intVertPair;
+
+//Uses code from graph.h in lab_ml
 class Graph {
     public: 
         /**
